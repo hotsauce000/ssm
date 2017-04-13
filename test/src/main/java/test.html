@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.2.0.min.js" type="text/javascript"></script>
+</head>
+<br>
+        <script type="text/javascript">
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/user/showUser" ,
+        data: { },
+        success: function (data) {
+            var str = " ";
+            var sss = " ";
+           $.each(data, function (index,Obj) {
+              str += "<p>" + Obj.adName + " &nbsp"
+                   + Obj.adPrice  + '<button  type = "submit" >修改</button>' + "</p>"  ;
+              sss += "a";
+           })
+            console.log(sss);
+            $("#div1").html(str)
+//            document.getElementById("div1").appendChild(str)
+//            document.write(str);
+        } ,
+        error:function (data) {
+            console.log(data);
+        },
+        dataType: "json"
+    });
+    console.log("bbbbb");
+</script>
+
+<div id = "div1"></div>
+
+
+
+</body>
+</html>

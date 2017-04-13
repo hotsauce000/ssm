@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+            <title>Title</title>
+            <script src="jquery-3.2.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+<script>
+    $(function(){
+        $("#click1").click(function () {
+            console.log("222222");
+            var price = $("#price").val();
+            var name = $("#name").val();
+            console.log(price);
+            console.log(name);
+
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/user/changeprice",
+                data:{"adName" : name,"adPrice" : price},
+                dataType:"JSON",
+                success: function (data) {
+                    alert("成功")
+                },
+                error:function (data) {
+                    alert("修改失败")
+                }
+            })
+        });
+    })
+
+
+
+</script>
+
+    广告名:<br>
+    <input id = "name" type="text" name = "广告名" value = "">
+    <br>
+    价格:<br>
+    <input  id = "price" type = "text" name = "价格" value = "">
+    <br><br>
+    <input id= "click1" type = "submit" value = "修改">
+
+</body>
+</html>

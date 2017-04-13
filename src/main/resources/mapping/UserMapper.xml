@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.UserDao">
+
+    <resultMap id="UserBaseMap" type="model.User">
+        <!--column数据库中的字段 property实体中的字段-->
+        <result column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="adName" property="adName" jdbcType="VARCHAR"/>
+        <result column="adPrice" property="adPrice" jdbcType="VARCHAR"/>
+
+
+    </resultMap>
+
+
+
+    <select id="selectAllUser" resultMap="UserBaseMap">
+        SELECT * FROM advertisement
+    </select>
+
+    <update id="changeprice" parameterType="map">
+      update advertisement  set adPrice = #{price} where adName = #{adname};
+    </update>
+
+    <select id="selectONEUser" parameterType="map" resultMap="UserBaseMap">
+        select adName,adPrice FROM advertisement WHERE adName = #{adname};
+    </select>
+
+
+    <select id="addUser" resultMap="UserBaseMap">
+        insert into advertisement(ID, adName,adPrice) values (5,'abc','28')
+    </select>
+</mapper>
